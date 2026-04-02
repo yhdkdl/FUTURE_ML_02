@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+venv/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data — never commit raw data to git
+data/raw/
+data/processed/
+
+# Model artifacts
+outputs/models/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Kaggle credentials — critical, never commit this
+kaggle.json
