@@ -1,0 +1,19 @@
+# Core
+pandas
+numpy
+
+# NLP
+nltk
+scikit-learn
+
+# Visualization
+matplotlib
+seaborn
+
+# Notebook
+jupyter
+ipykernel
+
+# Utilities
+joblib
+python-dotenv
