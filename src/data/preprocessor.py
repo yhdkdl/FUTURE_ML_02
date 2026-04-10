@@ -11,6 +11,26 @@ from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
+BOILERPLATE_PHRASES = [
+    r"i(?:'m| am) having an issue with the",
+    r"i'm facing a problem with my",
+    r"please assist",
+    r"please help",
+    r"i've tried troubleshooting steps mentioned in the user manual",
+    r"but the issue persists",
+    r"your billing zip code is",
+    r"we appreciate that you have requested",
+    r"please double check your email address",
+    r"the issue persists",
+    r"the issue remains unresolved",
+    r"i've already contacted customer support multiple times",
+    r"i've performed a factory reset",
+    r"i've recently updated the firmware",
+    r"it was working fine until yesterday",
+    r"sometimes it works fine but other times",
+    r"i've checked for any available software updates",
+]
+
 # Initialize once at module level to avoid repeated initialization overhead.
 STOP_WORDS = set(stopwords.words("english"))
 LEMMATIZER = WordNetLemmatizer()
@@ -30,6 +50,12 @@ def remove_numbers(text: str) -> str:
 def remove_placeholders(text: str) -> str:
     # Removes unfilled template tags like {product_purchased}, {order_id}
     return re.sub(r"\{[^}]*\}", "", text)
+
+def remove_boilerplate(text: str) -> str:
+    for phrase in BOILERPLATE_PHRASES:
+        text = re.sub(phrase, " ", text, flags=re.IGNORECASE)
+    return text
+
 
 
 def remove_extra_whitespace(text: str) -> str:
@@ -53,7 +79,8 @@ def clean_text(text: str) -> str:
         text = str(text)
 
     text = to_lowercase(text)
-    text = remove_placeholders(text)  
+    text = remove_placeholders(text) 
+    text = remove_boilerplate(text)   
     text = remove_punctuation(text)
     text = remove_numbers(text)
     text = remove_extra_whitespace(text)
