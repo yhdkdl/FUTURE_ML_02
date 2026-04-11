@@ -16,6 +16,7 @@ def assign_priority_labels(df: pd.DataFrame) -> pd.DataFrame:
     logger.info("Assigning rule-based priority labels...")
 
     df = df.copy()
+
     df[PRIORITY_COLUMN] = df[CATEGORY_TARGET].map(CATEGORY_TO_PRIORITY)
 
     unmapped = df[PRIORITY_COLUMN].isnull().sum()
