@@ -12,6 +12,7 @@ from src.utils.logger import get_logger
 logger = get_logger(__name__)
 
 BOILERPLATE_PHRASES = [
+    # Original boilerplate patterns
     r"i(?:'m| am) having an issue with the",
     r"i'm facing a problem with my",
     r"please assist",
@@ -29,6 +30,15 @@ BOILERPLATE_PHRASES = [
     r"it was working fine until yesterday",
     r"sometimes it works fine but other times",
     r"i've checked for any available software updates",
+    # Zenodo redaction tags — strip these before vectorization
+    r"\[ticket id\]",
+    r"\[name\]",
+    r"\[company\]",
+    r"\[location\]",
+    r"\[server\]",
+    r"\[address\]",
+    r"\[email\]",
+    r"\[phone\]",
 ]
 
 # Initialize once at module level to avoid repeated initialization overhead.
