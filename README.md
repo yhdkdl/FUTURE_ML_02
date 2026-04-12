@@ -32,10 +32,6 @@ IT company (Zenodo dataset).
 ## 🚀 Quick Start
 
 ### 1. Clone the repo
-```bash
-git clone https://github.com/YOUR_USERNAME/support-ticket-classifier
-cd support-ticket-classifier
-```
 
 ### 2. Create virtual environment
 ```bash
