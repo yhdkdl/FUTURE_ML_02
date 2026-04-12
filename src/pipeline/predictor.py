@@ -1,5 +1,4 @@
 import joblib
-import pandas as pd
 from dataclasses import dataclass
 from typing import Optional
 
@@ -129,7 +128,13 @@ class TicketPredictor:
         logger.info("Batch prediction complete")
         return results
 
-    def predict_dataframe(self, df: pd.DataFrame, text_column: str) -> pd.DataFrame:
+    def predict_dataframe(self, df, text_column: str):
+        # Local import keeps ticket/demo flows usable even if pandas is unavailable.
+        import pandas as pd
+
+        if not isinstance(df, pd.DataFrame):
+            raise TypeError("df must be a pandas DataFrame")
+
         results = self.predict_batch(df[text_column].astype(str).tolist())
 
         df = df.copy()

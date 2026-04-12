@@ -1,7 +1,6 @@
 import re
 import string
 
-import pandas as pd
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
@@ -101,7 +100,7 @@ def clean_text(text: str) -> str:
     return text
 
 
-def preprocess_dataframe(df: pd.DataFrame) -> pd.DataFrame:
+def preprocess_dataframe(df):
     logger.info("Starting text preprocessing pipeline...")
 
     df = df.copy()
